@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Dias Hafiidh Ega Maulana</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Project Modal */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(6,10,16,0.92);
+      backdrop-filter: blur(16px);
+      z-index: 500;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: auto; }
+    .modal {
+      background: #0A1420;
+      border: 1px solid var(--border-hover);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 640px;
+      width: 100%;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      box-shadow: 0 40px 80px rgba(0,212,255,0.15);
+    }
+    .modal-overlay.open .modal { transform: scale(1); }
+    .modal-close {
+      position: absolute; top: 20px; right: 20px;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+    .modal-close:hover { border-color: var(--neon-blue); color: var(--neon-blue); }
+    .modal-emoji { font-size: 56px; margin-bottom: 20px; }
+    .modal-title { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
+    .modal-org { font-family: var(--font-code); font-size: 12px; color: var(--neon-blue); letter-spacing: 2px; margin-bottom: 20px; }
+    .modal-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .modal-features { margin-bottom: 28px; }
+    .modal-features h4 { font-family: var(--font-code); font-size: 11px; color: var(--neon-green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .modal-feature { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; font-size: 14px; color: var(--text-secondary); }
+    .modal-feature::before { content: '▸'; color: var(--neon-blue); flex-shrink: 0; margin-top: 1px; }
+  </style>
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+<div class="grid-bg"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="page-transition"></div>
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">DIASTECH</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="certificates.html">Certificates</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <span class="mobile-menu-close" id="menu-close">✕</span>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html" class="active">Projects</a>
+  <a href="certificates.html">Certificates</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main>
+  <div class="section">
+
+    <!-- HEADER -->
+    <div style="margin-bottom:20px;" class="reveal">
+      <div class="section-label">// What I've Built</div>
+      <h1 class="section-title">My <span class="highlight">Projects</span></h1>
+      <div class="section-divider"></div>
+      <p class="section-subtitle">A collection of real-world projects exploring IoT, AI, automation, and more.</p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;" class="reveal">
+      <button class="btn btn-primary filter-btn" data-filter="all" style="padding:10px 20px;font-size:13px;">All Projects</button>
+      <button class="btn btn-ghost filter-btn" data-filter="iot" style="padding:10px 20px;font-size:13px;">IoT</button>
+      <button class="btn btn-ghost filter-btn" data-filter="ai" style="padding:10px 20px;font-size:13px;">AI / ML</button>
+      <button class="btn btn-ghost filter-btn" data-filter="automation" style="padding:10px 20px;font-size:13px;">Automation</button>
+      <button class="btn btn-ghost filter-btn" data-filter="networking" style="padding:10px 20px;font-size:13px;">Networking</button>
+    </div>
+
+    <div class="projects-grid" id="projects-container">
+
+      <!-- PROJECT 1 -->
+      <div class="project-card reveal" data-category="iot ai" data-project="0">
+        <div class="project-image">
+          <div class="project-image-bg">🌡️</div>
+          <div class="project-image-overlay"></div>
+          <span class="project-badge">FEATURED</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Samsung Innovation Campus IoT Final Project</h3>
+          <p class="project-desc">Final project combining IoT devices with AI analysis — a smart environmental monitoring system built during the Samsung Innovation Campus program.</p>
+          <div class="project-tags">
+            <span class="tag">ESP32</span>
+            <span class="tag green">Python</span>
+            <span class="tag purple">AI/ML</span>
+            <span class="tag">MQTT</span>
+          </div>
+          <button class="btn btn-ghost" style="font-size:13px;padding:10px 20px;" onclick="openModal(0)">View Details →</button>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card reveal" data-category="automation" data-project="1">
+        <div class="project-image">
+          <div class="project-image-bg">🤖</div>
+          <div class="project-image-overlay"></div>
+          <span class="project-badge">AUTOMATION</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">WhatsApp Bot (JavaScript & JSON)</h3>
+          <p class="project-desc">Automation bot built using JavaScript and JSON for smart messaging, auto-replies, and task automation through the WhatsApp platform.</p>
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag green">JSON</span>
+            <span class="tag">Node.js</span>
+          </div>
+          <button class="btn btn-ghost" style="font-size:13px;padding:10px 20px;" onclick="openModal(1)">View Details →</button>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card reveal" data-category="iot" data-project="2">
+        <div class="project-image">
+          <div class="project-image-bg">📡</div>
+          <div class="project-image-overlay"></div>
+          <span class="project-badge">IoT</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Nerobot IoT Monitoring System</h3>
+          <p class="project-desc">IoT device for real-time monitoring of temperature and humidity using ESP32 sensors with live dashboard and alert notifications.</p>
+          <div class="project-tags">
+            <span class="tag">ESP32</span>
+            <span class="tag green">C++</span>
+            <span class="tag purple">MQTT</span>
+            <span class="tag">DHT22</span>
+          </div>
+          <button class="btn btn-ghost" style="font-size:13px;padding:10px 20px;" onclick="openModal(2)">View Details →</button>
+        </div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="project-card reveal" data-category="automation" data-project="3">
+        <div class="project-image">
+          <div class="project-image-bg">⚙️</div>
+          <div class="project-image-overlay"></div>
+          <span class="project-badge">WORKFLOW</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">n8n Automation Workflows</h3>
+          <p class="project-desc">Multiple automation workflows built with n8n connecting various APIs, webhooks, and services to automate repetitive business processes.</p>
+          <div class="project-tags">
+            <span class="tag">n8n</span>
+            <span class="tag green">API</span>
+            <span class="tag">Webhooks</span>
+          </div>
+          <button class="btn btn-ghost" style="font-size:13px;padding:10px 20px;" onclick="openModal(3)">View Details →</button>
+        </div>
+      </div>
+
+      <!-- PROJECT 5 -->
+      <div class="project-card reveal" data-category="networking" data-project="4">
+        <div class="project-image">
+          <div class="project-image-bg">🌐</div>
+          <div class="project-image-overlay"></div>
+          <span class="project-badge">NETWORKING</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">MikroTik Network Lab</h3>
+          <p class="project-desc">Designed and configured a complete LAN network topology using MikroTik routers with DHCP, firewall rules, and bandwidth management.</p>
+          <div class="project-tags">
+            <span class="tag">MikroTik</span>
+            <span class="tag green">LAN</span>
+            <span class="tag purple">RouterOS</span>
+          </div>
+          <button class="btn btn-ghost" style="font-size:13px;padding:10px 20px;" onclick="openModal(4)">View Details →</button>
+        </div>
+      </div>
+
+      <!-- PROJECT 6 -->
+      <div class="project-card reveal" data-category="ai" data-project="5">
+        <div class="project-image">
+          <div class="project-image-bg">🧠</div>
+          <div class="project-image-overlay"></div>
+          <span class="project-badge">AI/ML</span>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">ML Model Training Lab</h3>
+          <p class="project-desc">Training and evaluation of machine learning classification models for the AI Arena competition using Python, Scikit-learn, and TensorFlow.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag green">TensorFlow</span>
+            <span class="tag purple">Scikit-learn</span>
+          </div>
+          <button class="btn btn-ghost" style="font-size:13px;padding:10px 20px;" onclick="openModal(5)">View Details →</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-text">© 2025 <span>Dias Hafiidh Ega Maulana</span> — Built with 💙</div>
+  <div class="footer-links">
+    <a href="https://github.com/yasss31" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/dias-ega-03203a377" target="_blank">LinkedIn</a>
+    <a href="https://medium.com/@24.tjkt1.13" target="_blank">Medium</a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-menu').classList.add('open'));
+  document.getElementById('menu-close').addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+
+  // Project data
+  const projects = [
+    {
+      emoji: '🌡️',
+      title: 'Samsung Innovation Campus IoT Final Project',
+      org: 'SAMSUNG INNOVATION CAMPUS · 2025',
+      desc: 'The culminating project of the Samsung Innovation Campus program — an integrated smart monitoring system that combines IoT hardware with AI-powered analysis. The system collects real-time environmental data using ESP32 sensors and runs machine learning inference to predict anomalies and generate alerts.',
+      tags: ['ESP32', 'Python', 'AI/ML', 'MQTT', 'TensorFlow', 'IoT'],
+      features: [
+        'Real-time temperature and humidity monitoring via ESP32 + DHT22',
+        'MQTT protocol for wireless data transmission',
+        'Python-based ML model for anomaly detection',
+        'Dashboard for data visualization and alerts',
+        'Automated notification system when thresholds are exceeded'
+      ]
+    },
+    {
+      emoji: '🤖',
+      title: 'WhatsApp Bot (JavaScript & JSON)',
+      org: 'PERSONAL PROJECT · 2024',
+      desc: 'An automation bot built using JavaScript and JSON configuration for the WhatsApp messaging platform. The bot handles auto-replies, command processing, and integrates with external APIs to provide useful automated responses.',
+      tags: ['JavaScript', 'JSON', 'Node.js', 'WhatsApp Web API', 'Automation'],
+      features: [
+        'Automated message replies based on keyword triggers',
+        'JSON-based configuration for easy command management',
+        'Integration with external APIs for dynamic responses',
+        'Group message handling and broadcast support',
+        'Logging and error handling system'
+      ]
+    },
+    {
+      emoji: '📡',
+      title: 'Nerobot IoT Monitoring System',
+      org: 'PERSONAL PROJECT · 2024',
+      desc: 'A full IoT monitoring solution using ESP32 microcontroller with DHT22 sensors for real-time temperature and humidity tracking. Data is transmitted via MQTT to a cloud broker and displayed on a live dashboard with alert capabilities.',
+      tags: ['ESP32', 'C++', 'MQTT', 'DHT22', 'IoT', 'Dashboard'],
+      features: [
+        'ESP32 with DHT22 sensor for environmental data collection',
+        'MQTT protocol for efficient data transmission',
+        'Real-time web dashboard for live monitoring',
+        'Threshold-based alert system with notifications',
+        'Historical data logging and export functionality'
+      ]
+    },
+    {
+      emoji: '⚙️',
+      title: 'n8n Automation Workflows',
+      org: 'PERSONAL PROJECT · 2024',
+      desc: 'A series of automation workflows built with the n8n platform, connecting various services and APIs to eliminate repetitive tasks. Includes webhook triggers, API integrations, data transformation, and scheduled automation pipelines.',
+      tags: ['n8n', 'API Integration', 'Webhooks', 'Automation', 'JSON'],
+      features: [
+        'Multi-step automation workflows connecting 5+ services',
+        'Webhook triggers for real-time event processing',
+        'API integrations with external services',
+        'Scheduled cron jobs for recurring tasks',
+        'Error handling and retry mechanisms'
+      ]
+    },
+    {
+      emoji: '🌐',
+      title: 'MikroTik Network Lab',
+      org: 'SCHOOL PROJECT · 2024',
+      desc: 'A comprehensive network configuration project using MikroTik RouterOS. Designed a full LAN topology for a small office environment including routing, DHCP, firewall rules, and bandwidth management policies.',
+      tags: ['MikroTik', 'RouterOS', 'LAN', 'DHCP', 'Firewall', 'Networking'],
+      features: [
+        'Complete LAN network topology design and implementation',
+        'DHCP server configuration for automatic IP assignment',
+        'Firewall rules and NAT configuration',
+        'Bandwidth management and QoS policies',
+        'Network monitoring and logging setup'
+      ]
+    },
+    {
+      emoji: '🧠',
+      title: 'ML Model Training Lab',
+      org: 'AI ARENA COMPETITION · 2024',
+      desc: 'A machine learning project built for the AI Arena competition, involving data preprocessing, feature engineering, model training, and evaluation using Python\'s ML ecosystem. Applied multiple algorithms to solve a real-world classification problem.',
+      tags: ['Python', 'TensorFlow', 'Scikit-learn', 'Pandas', 'NumPy', 'ML'],
+      features: [
+        'Data preprocessing and feature engineering pipeline',
+        'Training and comparison of multiple ML algorithms',
+        'Model evaluation with accuracy, precision, and recall metrics',
+        'Hyperparameter tuning for performance optimization',
+        'Visualization of training progress and results'
+      ]
+    }
+  ];
+
+  function openModal(index) {
+    const p = projects[index];
+    document.getElementById('modal-content').innerHTML = `
+      <div class="modal-emoji">${p.emoji}</div>
+      <div class="modal-title">${p.title}</div>
+      <div class="modal-org">${p.org}</div>
+      <p class="modal-desc">${p.desc}</p>
+      <div class="modal-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div class="modal-features">
+        <h4>// Key Features</h4>
+        ${p.features.map(f => `<div class="modal-feature">${f}</div>`).join('')}
+      </div>
+      <a href="https://github.com/yasss31" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">
+        View on GitHub ↗
+      </a>
+    `;
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+
+  document.getElementById('modal-close').addEventListener('click', () => {
+    document.getElementById('modal-overlay').classList.remove('open');
+  });
+
+  document.getElementById('modal-overlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('modal-overlay')) {
+      document.getElementById('modal-overlay').classList.remove('open');
+    }
+  });
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.className = 'btn btn-ghost filter-btn';
+        b.style.padding = '10px 20px';
+        b.style.fontSize = '13px';
+      });
+      this.className = 'btn btn-primary filter-btn';
+      this.style.padding = '10px 20px';
+      this.style.fontSize = '13px';
+
+      const filter = this.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card => {
+        const cat = card.dataset.category || '';
+        if (filter === 'all' || cat.includes(filter)) {
+          card.style.display = '';
+          card.style.animation = 'fadeInUp 0.4s ease forwards';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Dias Hafiidh Ega Maulana</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+<div class="grid-bg"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="page-transition"></div>
+
+<nav>
+  <div class="nav-logo">DIASTECH</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="certificates.html">Certificates</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <span class="mobile-menu-close" id="menu-close">✕</span>
+  <a href="index.html">Home</a>
+  <a href="about.html" class="active">About</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="certificates.html">Certificates</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<main>
+  <div class="section">
+
+    <!-- PAGE HEADER -->
+    <div style="margin-bottom:60px;" class="reveal">
+      <div class="section-label">// WHO AM I</div>
+      <h1 class="section-title">About <span class="highlight">Me</span></h1>
+      <div class="section-divider"></div>
+      <p class="section-subtitle">Passionate student exploring the intersection of IoT, AI, and cloud technologies.</p>
+    </div>
+
+    <!-- ABOUT GRID -->
+    <div class="about-grid">
+
+      <!-- LEFT: PHOTO -->
+      <div class="about-photo-wrap reveal-left">
+        <div class="about-photo-frame">
+          <img src="assets/images/profile.jpg" alt="Dias Hafiidh Ega Maulana" class="about-photo">
+          <div class="about-badge">🟢 Available for Collaboration</div>
+        </div>
+
+        <!-- Download CV -->
+        <div style="margin-top:20px;text-align:center;">
+          <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showToast('📄 CV download coming soon!')">
+            ↓ Download CV
+          </a>
+        </div>
+
+        <!-- Social quick links -->
+        <div style="display:flex;gap:10px;margin-top:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="https://github.com/yasss31" target="_blank" class="btn btn-ghost" style="padding:10px 16px;font-size:13px;">GitHub</a>
+          <a href="https://linkedin.com/in/dias-ega-03203a377" target="_blank" class="btn btn-ghost" style="padding:10px 16px;font-size:13px;">LinkedIn</a>
+          <a href="https://medium.com/@24.tjkt1.13" target="_blank" class="btn btn-ghost" style="padding:10px 16px;font-size:13px;">Medium</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: INFO -->
+      <div class="reveal-right">
+
+        <div class="section-label">// Introduction</div>
+        <p style="font-size:16px;line-height:1.9;color:var(--text-secondary);margin-bottom:24px;">
+          Hi! I'm <strong style="color:var(--text-primary);">Dias Hafiidh Ega Maulana</strong>, a dedicated student at SMK Negeri 1 Banyumas majoring in Computer Network and Telecommunications (TJKT) with a sub-major in Cloud Engineering.
+        </p>
+        <p style="font-size:15px;line-height:1.9;color:var(--text-secondary);margin-bottom:24px;">
+          My passion lies in exploring the boundaries of technology — from building IoT devices with ESP32, training machine learning models, automating workflows with n8n, to diving deep into Linux system administration and cloud computing.
+        </p>
+        <p style="font-size:15px;line-height:1.9;color:var(--text-secondary);margin-bottom:32px;">
+          I completed the Samsung Innovation Campus (SIC) program, an intensive 6-month training covering Python, IoT device discovery, and AI — culminating in a final project that merged IoT hardware with machine learning analysis.
+        </p>
+
+        <!-- Personal Info Grid -->
+        <div class="section-label">// Personal Info</div>
+        <div class="info-grid" style="margin-top:12px;">
+          <div class="info-item">
+            <div class="info-label">Full Name</div>
+            <div class="info-value">Dias Hafiidh Ega Maulana</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Location</div>
+            <div class="info-value">📍 Adisana, Banyumas, Jawa Tengah</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Education</div>
+            <div class="info-value">SMK Negeri 1 Banyumas</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Major</div>
+            <div class="info-value">TJKT — Cloud Engineer</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Study Period</div>
+            <div class="info-value">2024 – 2027</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Status</div>
+            <div class="info-value" style="color:var(--neon-green);">🟢 Active Student</div>
+          </div>
+        </div>
+
+        <!-- Focus Areas -->
+        <div style="margin-top:28px;">
+          <div class="section-label">// Focus Areas</div>
+          <div class="focus-chips" style="margin-top:12px;">
+            <span class="tag">🔌 Internet of Things</span>
+            <span class="tag green">🤖 Artificial Intelligence</span>
+            <span class="tag purple">⚙️ Automation</span>
+            <span class="tag">🌐 Networking</span>
+            <span class="tag green">🐧 Linux</span>
+            <span class="tag">☁️ Cloud Computing</span>
+            <span class="tag purple">🐍 Python</span>
+            <span class="tag">🔒 Cyber Security</span>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid" style="margin-top:32px;">
+          <div class="stat-card">
+            <div class="stat-card-num" data-count="5" data-suffix="+">5+</div>
+            <div class="stat-card-label">Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-num" data-count="4" data-suffix="+">4+</div>
+            <div class="stat-card-label">Certificates</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-num" data-count="3" data-suffix="+">3+</div>
+            <div class="stat-card-label">Trainings</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-num" data-count="3" data-suffix="+">3+</div>
+            <div class="stat-card-label">Competitions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SKILLS ─── -->
+    <div style="margin-top:80px;">
+      <div class="reveal">
+        <div class="section-label">// Technical Proficiency</div>
+        <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;">
+        <div class="reveal-left">
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">🔌 Internet of Things</span>
+                <span class="skill-bar-pct">80%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">🐍 Python Programming</span>
+                <span class="skill-bar-pct">75%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="75"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">🤖 AI / Machine Learning</span>
+                <span class="skill-bar-pct">65%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="65"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">🐧 Linux Administration</span>
+                <span class="skill-bar-pct">70%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="70"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">☁️ Cloud Computing</span>
+                <span class="skill-bar-pct">55%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="55"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal-right">
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">🌐 Network Config (MikroTik)</span>
+                <span class="skill-bar-pct">72%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="72"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">💻 JavaScript</span>
+                <span class="skill-bar-pct">60%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="60"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">⚙️ Automation (n8n)</span>
+                <span class="skill-bar-pct">68%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="68"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">🔒 Cyber Security</span>
+                <span class="skill-bar-pct">50%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="50"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">📡 Cisco Packet Tracer</span>
+                <span class="skill-bar-pct">65%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="65"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SOFT SKILLS ─── -->
+    <div style="margin-top:60px;" class="reveal">
+      <div class="section-label">// Soft Skills</div>
+      <h2 class="section-title">Personal <span class="highlight">Qualities</span></h2>
+      <div class="section-divider"></div>
+      <div class="soft-skills-list">
+        <div class="soft-skill-item"><div class="soft-skill-dot"></div>Discipline & Responsibility</div>
+        <div class="soft-skill-item"><div class="soft-skill-dot"></div>Team Collaboration</div>
+        <div class="soft-skill-item"><div class="soft-skill-dot"></div>Effective Communication</div>
+        <div class="soft-skill-item"><div class="soft-skill-dot"></div>Problem Solving</div>
+        <div class="soft-skill-item"><div class="soft-skill-dot"></div>Empathy</div>
+        <div class="soft-skill-item"><div class="soft-skill-dot"></div>Honesty & Professionalism</div>
+        <div class="soft-skill-item"><div class="soft-skill-dot"></div>Objective Thinking</div>
+      </div>
+    </div>
+
+    <!-- ─── HOBBIES ─── -->
+    <div style="margin-top:60px;" class="reveal">
+      <div class="section-label">// Outside the Screen</div>
+      <h2 class="section-title">Hobbies & <span class="highlight">Interests</span></h2>
+      <div class="section-divider"></div>
+      <div class="hobby-cards">
+        <div class="hobby-card">
+          <div class="hobby-icon">🏀</div>
+          <div class="hobby-name">Basketball</div>
+        </div>
+        <div class="hobby-card">
+          <div class="hobby-icon">🎬</div>
+          <div class="hobby-name">Watching Movies</div>
+        </div>
+        <div class="hobby-card">
+          <div class="hobby-icon">🎵</div>
+          <div class="hobby-name">Playing Music</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-text">© 2025 <span>Dias Hafiidh Ega Maulana</span> — Built with 💙</div>
+  <div class="footer-links">
+    <a href="https://github.com/yasss31" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/dias-ega-03203a377" target="_blank">LinkedIn</a>
+    <a href="https://medium.com/@24.tjkt1.13" target="_blank">Medium</a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-menu').classList.add('open'));
+  document.getElementById('menu-close').addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+  function showToast(msg) {
+    let toast = document.querySelector('.toast');
+    if (!toast) { toast = document.createElement('div'); toast.className = 'toast'; document.body.appendChild(toast); }
+    toast.textContent = msg; toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+</script>
+</body>
+</html>
